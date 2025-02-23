@@ -6,3 +6,7 @@ INTER_VOL = 0.1
 MUSIC_VOL = 0
 # MUSIC_VOL = 0.1
 GAME_VOL = 0.1
+
+#Game constants
+INVENTORY = {'heal': 1, 'bullet': 1}
+HEALTH = 6

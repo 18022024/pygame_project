@@ -1,9 +1,3 @@
-import os
-import sys
-import pytmx
-import pygame
-import classes
-import constants
 import random
 
 
@@ -15,7 +9,10 @@ def load_level(filename):
 
 
 maps = {
-    1: ['map1.tmx', load_level('map1.txt'), [2, 2], [[24, 7], [23, 7], [24, 8], [23, 8]]]
+    1: ['map1.tmx', load_level('map1.txt')],
+    2: ['map2.tmx', load_level('map2.txt')],
+    3: ['map3.tmx', load_level('map3.txt')],
+    4: ['map4.tmx', load_level('map4.txt')]
 }
 
 
