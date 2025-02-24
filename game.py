@@ -353,8 +353,7 @@ def start_game(screen):
                             enemy[0].is_damage = True
                         else:
                             enemy[0].alive = False
-                            enemy[1].kill()
-                            all_enemies.remove([enemy[0], enemy[1]])
+                            enemy[1].count = 0
 
             if enemy[0].is_damage:
                 enemy[1].health_cd += 1
@@ -365,15 +364,15 @@ def start_game(screen):
                     enemy[1].health_cd = 0
                     enemy[0].is_damage = False
 
+            if enemy[1].count <= 0:
+                enemy[1].kill()
+                enemy[0].alive = False
+
             if not enemy[0].alive:
                 enemy[0].death_time += 1
                 enemy[0].death(enemy[0].death_time)
                 if enemy[0].death_time >= 72:
                     all_enemies.remove([enemy[0], enemy[1]])
-
-            if enemy[1].count <= 0:
-                enemy[1].kill()
-                enemy[0].alive = False
 
             enemy[0].range_attack_cd += 1
             if enemy[0].range_attack_cd >= 120 and enemy[0].alive:
