@@ -11,7 +11,7 @@ def main():
         game.transition(screen, 0)
         pygame.mixer.music.load('data/game_music.mp3')
         pygame.mixer.music.play(-1)
-        pygame.mixer.music.set_volume(constants.MUSIC_VOL)
+        pygame.mixer.music.set_volume(constants.GAME_VOL)
         s = game.start_game(screen)
         while s:
             game.fade(screen)

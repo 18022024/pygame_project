@@ -653,18 +653,15 @@ def settings(screen):
     clicked_cursor.set_colorkey(clicked_cursor.get_at((0, 0)))
 
     global inter_vol
-    global game_vol
     global music_vol
 
     audio_inter_but = classes.Button(250, constants.SIZE[1] // 2 + 200, 800, 600,
                                      'Звук интерфейса', 'button.png', 'hover_button.png', 'button_sound.mp3')
-    audio_music_but = classes.Button(1050, constants.SIZE[1] // 2 + 200, 800, 600,
+    audio_music_but = classes.Button(1850, constants.SIZE[1] // 2 + 200, 800, 600,
                                      'Музыка', 'button.png', 'hover_button.png', 'button_sound.mp3')
-    game_eff_but = classes.Button(1850, constants.SIZE[1] // 2 + 200, 800, 600,
-                                  'Звук игры', 'button.png', 'hover_button.png', 'button_sound.mp3')
     back_but = classes.Button(1050, constants.SIZE[1] - 200, 800, 600,
                               'Назад', 'button.png', 'hover_button.png', 'button_sound.mp3')
-    buttons = [audio_inter_but, audio_music_but, game_eff_but, back_but]
+    buttons = [audio_inter_but, audio_music_but, back_but]
 
     running = True
     while running:
@@ -700,10 +697,6 @@ def settings(screen):
                 if inter_vol >= 1.0:
                     inter_vol = 0
                 inter_vol += 0.1
-
-            if event.type == pygame.USEREVENT and event.button == game_eff_but:
-                pass
-                # менять звуки игры
 
         for button in buttons:
             button.check_mouse(pygame.mouse.get_pos())
@@ -826,17 +819,14 @@ def in_game_audio(screen):
 
     global inter_vol
     global game_vol
-    global music_vol
 
-    back_but = classes.Button(1050, constants.SIZE[1] - 1100, 800, 600,
+    back_but = classes.Button(1050, constants.SIZE[1] - 800, 800, 600,
                               'Вернуться', 'button.png', 'hover_button.png', 'button_sound.mp3')
-    audio_inter_but = classes.Button(1050, constants.SIZE[1] - 800, 800, 600,
+    audio_inter_but = classes.Button(1050, constants.SIZE[1] - 500, 800, 600,
                                      'Звук интерфейса', 'button.png', 'hover_button.png', 'button_sound.mp3')
-    audio_music_but = classes.Button(1050, constants.SIZE[1] - 500, 800, 600,
-                                     'Музыка', 'button.png', 'hover_button.png', 'button_sound.mp3')
     game_eff_but = classes.Button(1050, constants.SIZE[1] - 200, 800, 600,
                                   'Звук игры', 'button.png', 'hover_button.png', 'button_sound.mp3')
-    buttons = [audio_inter_but, back_but, audio_music_but, game_eff_but]
+    buttons = [audio_inter_but, back_but, game_eff_but]
 
     running = True
     while running:
@@ -860,20 +850,16 @@ def in_game_audio(screen):
             if event.type == pygame.USEREVENT and event.button == back_but:
                 running = False
 
-            if event.type == pygame.USEREVENT and event.button == audio_music_but:
-                if music_vol >= 1.0:
-                    music_vol = 0
-                music_vol += 0.1
-                pygame.mixer.music.set_volume(music_vol)
-
             if event.type == pygame.USEREVENT and event.button == audio_inter_but:
                 if inter_vol >= 1.0:
                     inter_vol = 0
                 inter_vol += 0.1
 
             if event.type == pygame.USEREVENT and event.button == game_eff_but:
-                pass
-                # менять звуки игры
+                if game_vol >= 1.0:
+                    game_vol = 0
+                game_vol += 0.1
+                pygame.mixer.music.set_volume(game_vol)
 
         for button in buttons:
             button.check_mouse(pygame.mouse.get_pos())
