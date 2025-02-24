@@ -578,6 +578,9 @@ def start_game(screen):
         if not player.alive:
             death_time += 1
             player.death(death_time)
+            if death_time >= 160:
+                fade(screen)
+                return
         player.x = (player.rect.x + player.image.get_size()[0] // 2) // constants.TILE_WIDTH
         player.y = (player.rect.y + player.image.get_size()[1] // 2) // constants.TILE_WIDTH
 

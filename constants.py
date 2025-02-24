@@ -7,5 +7,5 @@ MUSIC_VOL = 0.1
 GAME_VOL = 0.1
 
 #Game constants
-INVENTORY = {'heal': 1, 'bullet': 1}
+INVENTORY = {'heal': 0, 'bullet': 0}
 HEALTH = 6
